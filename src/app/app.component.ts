@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
 
   title = 'MP Book';
 
-  books = new Array<Book>();
+  books: Book[];
+
+  displayedColumns: string[] = ['title'];
 
   constructor(
     private bookSrv: BookService
@@ -26,22 +28,7 @@ export class AppComponent implements OnInit {
   public getData(): void {
     this.bookSrv.getAll()
       .subscribe((res) => {
-        console.log(res);
-
-        this.books = res.map(item => {
-          return new Book(
-            item.id,
-            item.title,
-            item.author_id,
-            item.author,
-            item.editor_id,
-            item.editor,
-            item.price,
-            item.isbn,
-            item.note,
-            item.scaffale
-          )
-        });
+        this.books = [...res.books];
       });
 
   }
