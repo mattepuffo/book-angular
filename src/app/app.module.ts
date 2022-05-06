@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from "@angular/common/http";
 import {MatTableModule} from "@angular/material/table";
+import {MatCardModule} from "@angular/material/card";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import {MatTableModule} from "@angular/material/table";
     MatIconModule,
     MatButtonModule,
     MatTableModule,
+    MatCardModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
