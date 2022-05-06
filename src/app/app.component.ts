@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BookService} from "../_services/book.service";
+import {Book} from "../_interfaces/book";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import {BookService} from "../_services/book.service";
 })
 
 export class AppComponent implements OnInit {
+
   title = 'MP Book';
+
+  books = new Array<Book>();
 
   constructor(
     private bookSrv: BookService
@@ -22,9 +26,24 @@ export class AppComponent implements OnInit {
   public getData(): void {
     this.bookSrv.getAll()
       .subscribe((res) => {
-        // this.movimenti = [...res.data];
-        console.log(res.data);
+        console.log(res);
+
+        this.books = res.map(item => {
+          return new Book(
+            item.id,
+            item.title,
+            item.author_id,
+            item.author,
+            item.editor_id,
+            item.editor,
+            item.price,
+            item.isbn,
+            item.note,
+            item.scaffale
+          )
+        });
       });
+
   }
 
 }
