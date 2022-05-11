@@ -3,6 +3,8 @@ import {BookService} from "../_services/book.service";
 import {Book} from "../_interfaces/book";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatSort, Sort} from '@angular/material/sort';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ import {MatTableDataSource} from "@angular/material/table";
 
 export class AppComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   title = 'MP Book';
@@ -19,10 +22,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   books: Book[];
   dataSource = new MatTableDataSource<Book>();
 
-  displayedColumns: string[] = ['title', 'author', 'editor'];
+  displayedColumns: string[] = ['title', 'author', 'editor', 'isbn', 'price', 'note'];
 
   constructor(
-    private bookSrv: BookService
+    private bookSrv: BookService,
+    private liveAnnouncer: LiveAnnouncer
   ) {
   }
 
@@ -32,9 +36,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  public getData(): void {
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this.liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this.liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  getData(): void {
 
     this.bookSrv.getAll()
       .subscribe((res) => {

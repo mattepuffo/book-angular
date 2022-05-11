@@ -7,6 +7,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+#main {
+  width: 98%;
+  margin: 20px auto;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
