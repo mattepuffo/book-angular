@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'MP Book';
 
   books: Book[];
-  dataSource = null;
+  dataSource = new MatTableDataSource<Book>();
 
   displayedColumns: string[] = ['title', 'author', 'editor'];
 
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
   public getData(): void {
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.bookSrv.getAll()
       .subscribe((res) => {
         this.books = [...res.books];
-        this.dataSource = new MatTableDataSource<Book>(this.books);
+        this.dataSource.data = this.books;
       });
 
   }
