@@ -5,6 +5,8 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort, Sort} from '@angular/material/sort';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogBookComponent} from "./dialog-book/dialog-book.component";
 
 @Component({
   selector: 'app-root',
@@ -22,11 +24,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   books: Book[];
   dataSource = new MatTableDataSource<Book>();
 
-  displayedColumns: string[] = ['title', 'author', 'editor', 'isbn', 'price', 'note'];
+  displayedColumns: string[] = ['title', 'author', 'editor', 'isbn', 'price', 'note', 'id'];
 
   constructor(
     private bookSrv: BookService,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog
   ) {
   }
 
@@ -55,6 +58,17 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.dataSource.data = this.books;
       });
 
+  }
+
+  openDialogBook(bookId): void {
+    const dialogRef = this.dialog.open(DialogBookComponent, {
+      width: '500px',
+      data: {id: bookId},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
   }
 
 }

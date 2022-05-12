@@ -10,10 +10,18 @@ import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from '@angular/material/sort';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
+import {DialogBookComponent} from './dialog-book/dialog-book.component';
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogBookComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +34,16 @@ import {MatSortModule} from '@angular/material/sort';
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDividerModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ],
   bootstrap: [AppComponent]
 })
 
