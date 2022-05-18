@@ -11,6 +11,35 @@
       <input matInput formControlName="title">
     </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Autore *</mat-label>
+      <mat-select formControlName="author_id">
+        <mat-option *ngFor="let item of authors" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prezzo</mat-label>
+      <input matInput type="number" step="any" formControlName="price">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Scaffale</mat-label>
+      <input matInput formControlName="scaffale">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Note</mat-label>
+      <textarea matInput formControlName="note"></textarea>
+    </mat-form-field>
+
     <!--
     [disabled]="!frm.valid"
     -->

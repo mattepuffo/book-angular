@@ -23,7 +23,7 @@ export class BookService {
   }
 
   getById(id: number): Observable<{ books: Book }> {
-    return this.http.get(`${this.baseUrl}/book/get.php/get.php?id=${id}`).pipe(
+    return this.http.get(`${this.baseUrl}/book/get.php?id=${id}`).pipe(
       map((res: { books: Book }) => res)
     );
   }
