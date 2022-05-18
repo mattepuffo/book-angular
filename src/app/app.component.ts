@@ -51,13 +51,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   getData(): void {
+    this.bookSrv.getAll().subscribe((res) => {
+      this.books = [...res.books];
+      this.dataSource.data = this.books;
+    });
+  }
 
-    this.bookSrv.getAll()
-      .subscribe((res) => {
-        this.books = [...res.books];
-        this.dataSource.data = this.books;
-      });
-
+  doFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openDialogBook(bookId): void {

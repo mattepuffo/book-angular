@@ -15,6 +15,10 @@
 
 <div id="main">
 
+  <mat-form-field appearance="standard">
+    <input matInput placeholder="Cerca..." (keyup)="doFilter($event)">
+  </mat-form-field>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
          (matSortChange)="announceSortChange($event)">
 

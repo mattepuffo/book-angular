@@ -22,9 +22,9 @@ export class AuthorService {
     );
   }
 
-  getById(id: number): Observable<{ books: Author }> {
+  getById(id: number): Observable<{ authors: Author }> {
     return this.http.get(`${this.baseUrl}/author/get.php?id=${id}`).pipe(
-      map((res: { books: Author }) => res)
+      map((res: { authors: Author }) => res)
     );
   }
 
