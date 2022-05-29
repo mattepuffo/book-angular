@@ -18,11 +18,14 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatSelectModule} from "@angular/material/select";
+import {ToastrModule} from 'ngx-toastr';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogBookComponent
+    DialogBookComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,11 @@ import {MatSelectModule} from "@angular/material/select";
     MatInputModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

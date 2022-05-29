@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  {{data.message}}
+</div>
+
+<div style="float:right;margin:20px;">
+  <button mat-raised-button color="warn" style="margin-right: 10px;" (click)="del()">Cancella</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Annulla</button>
+</div>

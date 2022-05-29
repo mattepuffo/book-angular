@@ -7,6 +7,7 @@ import {Author} from "../../_interfaces/author";
 import {AuthorService} from "../../_services/author.service";
 import {Editor} from "../../_interfaces/editor";
 import {EditorService} from "../../_services/editor.service";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-dialog-book',
@@ -30,6 +31,7 @@ export class DialogBookComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogBookComponent>,
     @Inject(MAT_DIALOG_DATA) data,
+    private toastr: ToastrService,
     private bookSrv: BookService,
     private authorSrv: AuthorService,
     private editorSrv: EditorService
@@ -72,6 +74,7 @@ export class DialogBookComponent implements OnInit {
 
   creaForm(): void {
     this.frm = new FormGroup({
+      id: new FormControl(this.id),
       title: new FormControl('', Validators.required),
       author_id: new FormControl('', Validators.required),
       editor_id: new FormControl('', Validators.required),
@@ -90,7 +93,19 @@ export class DialogBookComponent implements OnInit {
   }
 
   send(): void {
-    console.log(this.frm.value);
+    // console.log(this.frm.value);
+
+    this.bookSrv.add(this.frm.value).subscribe((res) => {
+      // console.log(res);
+
+      if (res.res === 'ok') {
+        this.toastr.success(res.message, "OK");
+
+        this.close();
+      } else {
+        this.toastr.error(res.message, "ATTENZIONE");
+      }
+    });
   }
 
 }

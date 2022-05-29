@@ -7,6 +7,7 @@ import {MatSort, Sort} from '@angular/material/sort';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogBookComponent} from "./dialog-book/dialog-book.component";
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private bookSrv: BookService,
     private liveAnnouncer: LiveAnnouncer,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
   }
 
@@ -69,6 +70,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
+  }
+
+  del(bookId) {
+    const confirmDlg = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'ATTENZIONE!',
+        message: 'Vuoi cancellare questo libro?',
+        id: bookId
+      },
+    });
+
+    confirmDlg.afterClosed().subscribe(result => {
       this.getData();
     });
   }

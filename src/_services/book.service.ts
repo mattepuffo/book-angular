@@ -28,4 +28,15 @@ export class BookService {
     );
   }
 
+  add(book: Book): Observable<{ res: string, message: string }> {
+    return this.http.post(`${this.baseUrl}/book/add2.php`, book).pipe(
+      map((res: { res: string, message: string }) => res));
+  }
+
+  del(data): Observable<{ res: string, message: string }> {
+    return this.http.post(`${this.baseUrl}/book/del.php`, data).pipe(
+      map((res: { res: string, message: string }) => res));
+  }
+
+
 }
