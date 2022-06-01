@@ -19,13 +19,25 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatSelectModule} from "@angular/material/select";
 import {ToastrModule} from 'ngx-toastr';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {AutoriComponent} from './autori/autori.component';
+import {RouterModule, Routes} from "@angular/router";
+import {MenuComponent} from './menu/menu.component';
+
+const routes: Routes = [
+  {path: '', component: AppComponent},
+  {path: 'autori', component: AutoriComponent},
+  // {path: 'photo2', component: Photo2Component}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogBookComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AutoriComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +61,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
+    MatGridListModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

@@ -1,17 +1,4 @@
-<mat-toolbar class="mat-elevation-z10" color="primary">
-  <mat-toolbar-row>
-    <span>{{title}} |</span>
-
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Home</button>
-      <button mat-menu-item (click)="openDialogBook(0)">Aggiungi libro</button>
-      <button mat-menu-item>Aggiungi autore</button>
-      <button mat-menu-item>Aggiungi editore</button>
-    </mat-menu>
-
-  </mat-toolbar-row>
-</mat-toolbar>
+<app-menu></app-menu>
 
 <div id="main">
 

@@ -8,6 +8,8 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogBookComponent} from "./dialog-book/dialog-book.component";
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import {Author} from "../_interfaces/author";
+import {AuthorService} from "../_services/author.service";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   books: Book[];
   dataSource = new MatTableDataSource<Book>();
-
   displayedColumns: string[] = ['title', 'author', 'editor', 'isbn', 'price', 'note', 'id'];
 
   constructor(
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getData();
+      // this.getData();
     });
   }
 

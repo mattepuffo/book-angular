@@ -1,0 +1,16 @@
+<mat-toolbar class="mat-elevation-z10" color="primary">
+  <mat-toolbar-row>
+    <span>{{title}} |</span>
+
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <a routerLink="/" mat-menu-item>Home</a>
+      <a routerLink="/autori" mat-menu-item>Autori</a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="openDialogBook(0)">Aggiungi libro</button>
+      <button mat-menu-item>Aggiungi autore</button>
+      <button mat-menu-item>Aggiungi editore</button>
+    </mat-menu>
+
+  </mat-toolbar-row>
+</mat-toolbar>
