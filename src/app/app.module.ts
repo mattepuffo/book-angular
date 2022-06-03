@@ -22,14 +22,10 @@ import {ToastrModule} from 'ngx-toastr';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {AutoriComponent} from './autori/autori.component';
-import {RouterModule, Routes} from "@angular/router";
 import {MenuComponent} from './menu/menu.component';
-
-const routes: Routes = [
-  {path: '', component: AppComponent},
-  {path: 'autori', component: AutoriComponent},
-  // {path: 'photo2', component: Photo2Component}
-];
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {AppRoutingModule} from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +33,8 @@ const routes: Routes = [
     DialogBookComponent,
     ConfirmDialogComponent,
     AutoriComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +59,10 @@ const routes: Routes = [
       preventDuplicates: true,
     }),
     MatGridListModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule,
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
   ],
   bootstrap: [AppComponent]

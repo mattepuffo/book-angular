@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DialogBookComponent} from "../dialog-book/dialog-book.component";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -7,9 +7,10 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent implements OnInit {
 
-  title = '';
+  @Input() title = 'MP Book';
 
   constructor(
     public dialog: MatDialog,

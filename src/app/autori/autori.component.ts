@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Author} from "../../_interfaces/author";
 import {MatTableDataSource} from "@angular/material/table";
 import {AuthorService} from "../../_services/author.service";
 import {DialogBookComponent} from "../dialog-book/dialog-book.component";
 import {MatDialog} from "@angular/material/dialog";
-import {Sort} from "@angular/material/sort";
+import {MatSort, Sort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-autori',
@@ -13,9 +14,10 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
   styleUrls: ['./autori.component.css']
 })
 
-export class AutoriComponent implements OnInit {
+export class AutoriComponent implements OnInit, AfterViewInit {
 
-  title = 'Autori';
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   authors: Author[];
   dataSource = new MatTableDataSource<Author>();
@@ -30,6 +32,11 @@ export class AutoriComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   getData(): void {
