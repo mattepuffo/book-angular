@@ -25,7 +25,9 @@ import {AutoriComponent} from './autori/autori.component';
 import {MenuComponent} from './menu/menu.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
+import {EditoriComponent} from './editori/editori.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { HomeComponent } from './home/home.component';
     ConfirmDialogComponent,
     AutoriComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    EditoriComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { HomeComponent } from './home/home.component';
     }),
     MatGridListModule,
     AppRoutingModule,
+    MatTabsModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
