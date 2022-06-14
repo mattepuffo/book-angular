@@ -28,6 +28,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {EditoriComponent} from './editori/editori.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import { DialogAeComponent } from './dialog-ae/dialog-ae.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     AutoriComponent,
     MenuComponent,
     HomeComponent,
-    EditoriComponent
+    EditoriComponent,
+    DialogAeComponent
   ],
   imports: [
     BrowserModule,

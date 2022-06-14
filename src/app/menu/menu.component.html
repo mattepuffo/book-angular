@@ -11,8 +11,8 @@
       <mat-divider></mat-divider>
       -->
       <button mat-menu-item (click)="openDialogBook(0)">Aggiungi libro</button>
-      <button mat-menu-item>Aggiungi autore</button>
-      <button mat-menu-item>Aggiungi editore</button>
+      <button mat-menu-item (click)="openDialogAE('autore')">Aggiungi autore</button>
+      <button mat-menu-item (click)="openDialogAE('editore')">Aggiungi editore</button>
     </mat-menu>
 
   </mat-toolbar-row>
