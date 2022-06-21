@@ -1,1 +1,21 @@
-<p>dialog-ae works!</p>
+<div mat-dialog-content>
+  <h3>{{titolo}}</h3>
+
+  <mat-divider></mat-divider>
+  <br>
+
+  <form [formGroup]="frm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome *</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+  </form>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="send()" [disabled]="!frm.valid">Salva</button>
+  <button mat-raised-button color="warn" (click)="close()">Annulla</button>
+</div>

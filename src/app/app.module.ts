@@ -21,24 +21,18 @@ import {MatSelectModule} from "@angular/material/select";
 import {ToastrModule} from 'ngx-toastr';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import {AutoriComponent} from './autori/autori.component';
-import {MenuComponent} from './menu/menu.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
-import {EditoriComponent} from './editori/editori.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import { DialogAeComponent } from './dialog-ae/dialog-ae.component';
+import {DialogAeComponent} from './dialog-ae/dialog-ae.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogBookComponent,
     ConfirmDialogComponent,
-    AutoriComponent,
-    MenuComponent,
     HomeComponent,
-    EditoriComponent,
     DialogAeComponent
   ],
   imports: [

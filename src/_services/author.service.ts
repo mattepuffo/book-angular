@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {config} from "../_helpers/config";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -26,6 +26,11 @@ export class AuthorService {
     return this.http.get(`${this.baseUrl}/author/get.php?id=${id}`).pipe(
       map((res: { authors: Author }) => res)
     );
+  }
+
+  add(author: Author): Observable<{ res: string, message: string }> {
+    return this.http.post(`${this.baseUrl}/author/add.php`, author).pipe(
+      map((res: { res: string, message: string }) => res));
   }
 
 }

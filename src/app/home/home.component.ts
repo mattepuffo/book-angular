@@ -12,6 +12,7 @@ import {AuthorService} from "../../_services/author.service";
 import {Author} from "../../_interfaces/author";
 import {Editor} from "../../_interfaces/editor";
 import {EditorService} from "../../_services/editor.service";
+import {DialogAeComponent} from "../dialog-ae/dialog-ae.component";
 
 @Component({
   selector: 'app-home',
@@ -116,7 +117,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.getData();
+      this.getData();
+    });
+  }
+
+  openDialogAE(id, tipo): void {
+    const dialogRef = this.dialog.open(DialogAeComponent, {
+      width: '500px',
+      data: {id: id, tipo: tipo},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
     });
   }
 
@@ -133,4 +145,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.getData();
     });
   }
+
 }

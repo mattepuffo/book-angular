@@ -28,4 +28,9 @@ export class EditorService {
     );
   }
 
+  add(editor: Editor): Observable<{ res: string, message: string }> {
+    return this.http.post(`${this.baseUrl}/editor/add.php`, editor).pipe(
+      map((res: { res: string, message: string }) => res));
+  }
+
 }
